@@ -14,55 +14,6 @@ var H = screen.height;
 var x = Math.floor(Math.random() * (W - w));
 var y = Math.floor(Math.random() * (H - h));
 
-function gcd(a,b) {
-    var temp;
-    if(a < 0) {a = -a;};
-    if(b < 0) {b = -b;};
-    if(b > a) {temp = a; a = b; b = temp;};
-    while (true) {
-     a %= b;
-     if(a == 0) {return b;};
-     b %= a;
-     if(b == 0) {return a;};
-    };
-    return b;
-}
-function lcm(a,b) {
-    return Math.abs(a*b)/gcd(a,b);
-}
-
-var W0 = W - w;
-var H0 = H - h;
-
-
-console.log('W0 ' + W0);
-console.log('H0 ' + H0);
-console.log('gcd ' + gcd(W0, H0));
-console.log('lcm w h ' + lcm(W0, H0));
-
-
-
-if (Math.abs(x-y) % gcd(W0, H0) == 0) {
-    // corners will be reached
-    if ((Math.abs(x-y) / gcd(W0, H0)) % 2 == 0) {
-        console.log((lcm(W0,H0)/H0) % 2 == 0 ? 'T' : 'B');
-        console.log((lcm(W0,H0)/W0) % 2 == 0 ? 'L' : 'R');
-
-        console.log('T');
-        console.log('L');
-
-    } else {
-        console.log((lcm(W0,H0)/H0) % 2 != 0 ? 'T' : 'B');
-        console.log((lcm(W0,H0)/W0) % 2 != 0 ? 'L' : 'R');
-
-        console.log('B');
-        console.log('R');
-    }
-} else {
-    console.log("No corner!");
-}
-
-
 function animate() {
 
     reqAnimFrame = window.mozRequestAnimationFrame    ||

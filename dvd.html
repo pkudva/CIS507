@@ -23,14 +23,12 @@ function animate() {
 
     reqAnimFrame(animate);
 
-    for (var i=0;i<1;i++) {
-        x += vx;
-        y += vy;
-        if(x+w>=W) vx = -vx;
-        if(y+h>=H) vy = -vy;
-        if(x<=0) vx = -vx;
-        if(y<=0) vy = -vy;
-    }
+    x += vx;
+    y += vy;
+    if(x+w>=W) vx = -vx;
+    if(y+h>=H) vy = -vy;
+    if(x<=0) vx = -vx;
+    if(y<=0) vy = -vy;
 
     draw();
 }
@@ -45,8 +43,11 @@ function draw() {
     context.clearRect(0, 0, W, H);
     context.fillStyle = "#000000";
     context.fillRect(0, 0, W, H);
-    context.fillStyle = "#00ff00";
+
+    // placeholder rectangle
+    //context.fillStyle = "#00ff00";
     //context.fillRect(x, y, w, h);
+    
     context.drawImage(img, x, y, w, h);
 
     // test whether we are in a corner
